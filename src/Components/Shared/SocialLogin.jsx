@@ -1,8 +1,25 @@
 import React from 'react';
+import AuthHook from '../Hooks/AuthHook';
+import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
+    const { userWithGoogle } = AuthHook();
     const handleSocial = () => {
-        console.log('social')
+        // console.log('social')
+        userWithGoogle()
+            .then(res => {
+                console.log(res.user)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Registration Done",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
 

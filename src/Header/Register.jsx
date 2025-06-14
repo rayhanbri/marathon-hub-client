@@ -1,12 +1,13 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router';
 import SocialLogin from '../Components/Shared/SocialLogin';
 import AuthHook from '../Components/Hooks/AuthHook';
 import { AuthContext } from '../Components/Auth/AuthContext';
+import Swal from 'sweetalert2';
 
 const Register = () => {
-    const {name} = AuthHook();
-    console.log(name)
+    const { createUser } = AuthHook();
+    // console.log(name)
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
@@ -39,6 +40,22 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
         console.log(name, email, photo, password)
+
+        createUser(email, password)
+            .then(res => {
+                console.log(res.user)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Registration Done",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
 
     return (
@@ -52,20 +69,20 @@ const Register = () => {
                         <form onSubmit={handleRegister} className="fieldset">
                             {/* Name  */}
                             <label className="label">Name</label>
-                            <input type="text" name='name' className="input" placeholder="Your Name" required/>
+                            <input type="text" name='name' className="input" placeholder="Your Name" required />
                             {/* Email  */}
                             <label className="label">Email</label>
-                            <input type="email" name='email' className="input" placeholder="Email" required/>
+                            <input type="email" name='email' className="input" placeholder="Email" required />
                             {/* Photo url  */}
                             <label className="label">Photo URL</label>
-                            <input type="link" name='photo' className="input" placeholder="Photo URL" required/>
+                            <input type="link" name='photo' className="input" placeholder="Photo URL" required />
                             {/* Password  */}
                             <label className="label">Password</label>
                             <input type="password"
                                 name='password'
                                 className="input" placeholder="Password"
                                 value={password}
-                                onChange={handlePasswordChange} required/>
+                                onChange={handlePasswordChange} required />
                             {/* Password validation message */}
                             {passwordError && (
                                 <p className="text-red-500 text-sm mt-1">{passwordError}</p>
