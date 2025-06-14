@@ -3,7 +3,7 @@ import slider3 from '../assets/7491.jpg';
 
 const InfoSection = () => {
     return (
-        <div className="bg-gray-100 py-10 px-4 sm:px-12">
+        <div className="bg-gray-100 py-10 px-4 sm:px-12 rounded-2xl">
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-10">
 
                 {/* Left Content */}
