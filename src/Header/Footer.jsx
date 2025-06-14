@@ -51,6 +51,7 @@ const Footer = () => {
                         </svg>
                     </a>
                 </div>
+                
             </nav>
 
         </footer>

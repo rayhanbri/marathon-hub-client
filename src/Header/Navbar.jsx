@@ -9,7 +9,7 @@ const Navbar = () => {
         <Link to='/'>Home</Link>
         <li>Marathons</li>
         {
-            user && <li>Dashboard</li>
+            user && <Link to='/dashBoard'>Dashboard</Link>
         }
     </>
     // console.log(user.photoURL)
