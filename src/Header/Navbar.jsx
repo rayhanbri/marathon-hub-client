@@ -1,12 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router';
+import AuthHook from '../Components/Hooks/AuthHook';
 
 const Navbar = () => {
+    const { user, logOut } = AuthHook();
     const links = <>
-     <li>Home</li>
-     <li>Marathons</li>
+        <li>Home</li>
+        <li>Marathons</li>
+        {
+            user && <li>Dashboard</li>
+        }
     </>
+    // console.log(user)
 
+    const handleSignOut = () => {
+        logOut()
+            .then(res => {
+                console.log('sign out user')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -32,9 +47,24 @@ const Navbar = () => {
                     }
                 </ul>
             </div>
+
             <div className="navbar-end space-x-2.5 md:space-x-4">
-                <Link to='/login' className='btn btn-primary'>Login</Link>
-                <Link to='/register' className='btn btn-primary'>Register</Link>
+                {
+                    user &&
+                     <div className="avatar">
+                        <div className="mask mask-squircle w-16">
+                            <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                        </div>
+                        </div>
+                 }
+                    
+                {
+                    user ? <button onClick={handleSignOut} className='btn btn-primary'>SignOUt</button> :
+                        <>
+                            <Link to='/login' className='btn btn-primary'>Login</Link>
+                            <Link to='/register' className='btn btn-primary'>Register</Link>
+                        </>
+                }
             </div>
         </div>
     );
