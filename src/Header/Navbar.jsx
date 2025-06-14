@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import AuthHook from '../Components/Hooks/AuthHook';
+import logo from '../assets/Marathon Hub Simple Logo.png'
 
 const Navbar = () => {
     const { user, logOut } = AuthHook();
@@ -38,7 +39,10 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Logo</a>
+                <div  className='flex gap-2'>
+                    <img src={logo} className='w-12 hidden sm:block' alt="" />
+                    <h1 className='flex items-center text-xl md:text-4xl font-bold'>Marathon Hub</h1>
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 flex lg:gap-4 gap-2">
