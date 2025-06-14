@@ -6,7 +6,7 @@ import logo from '../assets/Marathon Hub Simple Logo.png'
 const Navbar = () => {
     const { user, logOut } = AuthHook();
     const links = <>
-        <li>Home</li>
+        <Link to='/'>Home</Link>
         <li>Marathons</li>
         {
             user && <li>Dashboard</li>

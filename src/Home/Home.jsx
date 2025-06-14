@@ -1,9 +1,12 @@
 import React from 'react';
+import Slider from './Slider';
+import InfoSection from './InfoSection';
 
 const Home = () => {
     return (
         <div>
-            i am home 
+           <Slider></Slider>
+           <InfoSection></InfoSection>
         </div>
     );
 };
