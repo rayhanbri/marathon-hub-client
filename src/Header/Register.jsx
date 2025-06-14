@@ -4,6 +4,7 @@ import SocialLogin from '../Components/Shared/SocialLogin';
 import AuthHook from '../Components/Hooks/AuthHook';
 import { AuthContext } from '../Components/Auth/AuthContext';
 import Swal from 'sweetalert2';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { createUser } = AuthHook();
@@ -44,6 +45,11 @@ const Register = () => {
         createUser(email, password)
             .then(res => {
                 console.log(res.user)
+                const user = res.user;
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photo,
+                })
                 Swal.fire({
                     position: "center",
                     icon: "success",

@@ -11,7 +11,7 @@ const Navbar = () => {
             user && <li>Dashboard</li>
         }
     </>
-    // console.log(user)
+    // console.log(user.photoURL)
 
     const handleSignOut = () => {
         logOut()
@@ -52,8 +52,8 @@ const Navbar = () => {
                 {
                     user &&
                      <div className="avatar">
-                        <div className="mask mask-squircle w-16">
-                            <img src="https://img.daisyui.com/images/profile/demo/distracted1@192.webp" />
+                        <div className="mask mask-squircle w-10 md:w-16">
+                            <img src={user.photoURL} />
                         </div>
                         </div>
                  }
