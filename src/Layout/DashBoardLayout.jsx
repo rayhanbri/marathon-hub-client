@@ -10,7 +10,7 @@ const DashBoardLayout = () => {
             <Navbar></Navbar>
             <div className="flex">
                 {/* Sidebar */}
-                <aside>
+                <aside className='sticky  top-0 h-fit'>
                     <Sidebar />
                 </aside>
 

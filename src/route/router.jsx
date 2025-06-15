@@ -9,6 +9,7 @@ import Register from "../Header/Register";
 import DashBoardLayout from "../Layout/DashBoardLayout"
 import AddMarathon from "../DashBoard/Add Marathon/AddMarathon";
 import MyMarathon from "../DashBoard/My Marathon/MyMarathon";
+import PrivateRoute from "../Components/Auth/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
     children:[
       {
         path:'add-marathon',
-        Component:AddMarathon
+        element:<PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
       },
       {
         path:'my-marathons',
