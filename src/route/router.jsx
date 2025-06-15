@@ -13,6 +13,7 @@ import PrivateRoute from "../Components/Auth/PrivateRoute";
 import Details from "../Home/Details";
 import MarathonReg from "../Home/MarathonReg";
 import { details } from "../API/Details";
+import AuthHook from "../Components/Hooks/AuthHook";
 
 
 export const router = createBrowserRouter([

@@ -5,13 +5,17 @@ import { FaLocationDot } from 'react-icons/fa6';
 import { GiPathDistance } from 'react-icons/gi';
 import { MdDateRange, MdEvent } from 'react-icons/md';
 import { useLoaderData, useNavigate } from 'react-router';
+import { details } from '../API/Details';
+import AuthHook from '../Components/Hooks/AuthHook';
 
 const Details = () => {
     const navigate = useNavigate(); 
+    const {user} = AuthHook()
     const marathon = useLoaderData();
     const [registrationOpen, setRegirationOpen] = useState(false);
     const {_id,image,title,endReg,startReg,marathonDate,location,description,distance} = marathon;
     // console.log(marathon)
+    const call = details(_id,user.accessToken)
     useEffect(()=>{
         const  today = new Date();
         const startDate = new Date(startReg)
@@ -25,7 +29,9 @@ const Details = () => {
         }
     },[startReg,endReg])
 
-    console.log(registrationOpen)
+    
+
+    // console.log(registrationOpen)
     return (
         <div className="card bg-base-100 shadow-sm flex ">
             <figure>
