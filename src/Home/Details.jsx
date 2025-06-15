@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
 import { FaRunning } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
@@ -8,8 +8,23 @@ import { useLoaderData } from 'react-router';
 
 const Details = () => {
     const marathon = useLoaderData();
+    const [registrationOpen, setRegirationOpen] = useState(false);
     const {image,title,endReg,startReg,marathonDate,location,description,distance} = marathon;
-    console.log(marathon)
+    // console.log(marathon)
+    useEffect(()=>{
+        const  today = new Date();
+        const startDate = new Date(startReg)
+        const endDate = new Date(endReg)
+        // console.log(today,startDate,endDate)
+        if(today >= startDate && today< endDate){
+            setRegirationOpen(true)
+        }
+        else{
+            setRegirationOpen(false)
+        }
+    },[startReg,endReg])
+
+    console.log(registrationOpen)
     return (
         <div className="card bg-base-100 shadow-sm flex ">
             <figure>
@@ -31,7 +46,11 @@ const Details = () => {
                  
                </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary w-full">Registration</button>
+                    <button className="btn btn-primary w-full" disabled={!registrationOpen}>
+                        {
+                            registrationOpen ? "Registration" : 'Registration Closed' 
+                        }
+                        </button>
                 </div>
             </div>
         </div>
