@@ -11,6 +11,8 @@ import AddMarathon from "../DashBoard/Add Marathon/AddMarathon";
 import MyMarathon from "../DashBoard/My Marathon/MyMarathon";
 import PrivateRoute from "../Components/Auth/PrivateRoute";
 import Details from "../Home/Details";
+import MarathonReg from "../Home/MarathonReg";
+import { details } from "../API/Details";
 
 
 export const router = createBrowserRouter([
@@ -30,7 +32,11 @@ export const router = createBrowserRouter([
       {
         path:'/details/:id',
         element:<PrivateRoute><Details></Details></PrivateRoute>,
-        loader:({params}) =>fetch(`http://localhost:3000/details/${params.id}`)
+        loader:({params}) =>details(params.id)
+      },
+      {
+        path:'/marathon-register/:id',
+        element:<MarathonReg></MarathonReg>
       }
       ],
   },

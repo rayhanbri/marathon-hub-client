@@ -10,7 +10,7 @@ const Details = () => {
     const navigate = useNavigate(); 
     const marathon = useLoaderData();
     const [registrationOpen, setRegirationOpen] = useState(false);
-    const {image,title,endReg,startReg,marathonDate,location,description,distance} = marathon;
+    const {_id,image,title,endReg,startReg,marathonDate,location,description,distance} = marathon;
     // console.log(marathon)
     useEffect(()=>{
         const  today = new Date();
@@ -47,7 +47,7 @@ const Details = () => {
                  
                </div>
                 <div className="card-actions justify-end">
-                    <button onClick={()=>navigate(`/`)} className="btn btn-primary w-full" disabled={!registrationOpen}>
+                    <button onClick={()=>navigate(`/marathon-register/${_id}`)} className="btn btn-primary w-full" disabled={!registrationOpen}>
                         {
                             registrationOpen ? "Registration" : 'Registration Closed' 
                         }
