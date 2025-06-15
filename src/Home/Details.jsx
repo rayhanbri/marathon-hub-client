@@ -4,9 +4,10 @@ import { FaRunning } from 'react-icons/fa';
 import { FaLocationDot } from 'react-icons/fa6';
 import { GiPathDistance } from 'react-icons/gi';
 import { MdDateRange, MdEvent } from 'react-icons/md';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 
 const Details = () => {
+    const navigate = useNavigate(); 
     const marathon = useLoaderData();
     const [registrationOpen, setRegirationOpen] = useState(false);
     const {image,title,endReg,startReg,marathonDate,location,description,distance} = marathon;
@@ -16,7 +17,7 @@ const Details = () => {
         const startDate = new Date(startReg)
         const endDate = new Date(endReg)
         // console.log(today,startDate,endDate)
-        if(today >= startDate && today< endDate){
+        if(today >= startDate && today < endDate){
             setRegirationOpen(true)
         }
         else{
@@ -46,7 +47,7 @@ const Details = () => {
                  
                </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary w-full" disabled={!registrationOpen}>
+                    <button onClick={()=>navigate(`/`)} className="btn btn-primary w-full" disabled={!registrationOpen}>
                         {
                             registrationOpen ? "Registration" : 'Registration Closed' 
                         }
