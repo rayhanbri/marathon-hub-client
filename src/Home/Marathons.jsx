@@ -4,6 +4,7 @@ import Spinner from '../Components/Auth/Spinner';
 
 const Marathons = () => {
     const dataPromise=fetch('http://localhost:3000/marathons').then(res => res.json())
+    // console.log(dataPromise)
     return (
         <div>
             <h1 className='text-4xl font-bold mt-2 md:mt-4'>Marathons </h1>
