@@ -7,7 +7,7 @@ const Navbar = () => {
     const { user, logOut } = AuthHook();
     const links = <>
         <Link to='/'>Home</Link>
-        <li>Marathons</li>
+        <Link to='/show-marathon'>Marathons</Link>
         {
             user && <Link to='/dashBoard'>Dashboard</Link>
         }

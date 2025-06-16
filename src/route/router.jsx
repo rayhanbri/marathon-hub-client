@@ -14,6 +14,8 @@ import Details from "../Home/Details";
 import MarathonReg from "../Home/MarathonReg";
 import { details } from "../API/Details";
 import AuthHook from "../Components/Hooks/AuthHook";
+import Marathons from "../Home/Marathons";
+import AllMarathon from "../Components/Marathon/AllMarathon";
 
 
 export const router = createBrowserRouter([
@@ -38,6 +40,10 @@ export const router = createBrowserRouter([
       {
         path:'/marathon-register/:id',
         element:<MarathonReg></MarathonReg>
+      },
+      {
+        path:'/show-marathon',
+        element:<PrivateRoute><AllMarathon></AllMarathon></PrivateRoute>
       }
       ],
   },

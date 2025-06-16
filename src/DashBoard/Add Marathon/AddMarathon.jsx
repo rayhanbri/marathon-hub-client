@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const AddMarathon = () => {
     const { user } = AuthHook();
-    // console.log(user.email)
+    console.log( user.providerData)
     const handleAdd = (e) => {
         e.preventDefault();
         const form = e.target;
