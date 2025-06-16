@@ -15,7 +15,7 @@ const RegistrationCard = ({ dataPromise }) => {
         const formdata = new FormData(form);
         const userData = Object.fromEntries(formdata.entries())
         userData.eventId = regData._id
-        console.log(userData)
+        // console.log(userData)
 
         axios.post('http://localhost:3000/registration', userData)
             .then(res => {

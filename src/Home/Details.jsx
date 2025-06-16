@@ -9,12 +9,18 @@ import { details } from '../API/Details';
 import AuthHook from '../Components/Hooks/AuthHook';
 
 const Details = () => {
+    const [total , setTotal] = useState(0)
     const navigate = useNavigate(); 
     const {user} = AuthHook()
     const marathon = useLoaderData();
     const [registrationOpen, setRegirationOpen] = useState(false);
     const {_id,image,title,endReg,startReg,marathonDate,location,description,distance} = marathon;
     // console.log(marathon)
+    useEffect(()=>{
+        fetch(`http://localhost:3000/total-registration/${_id}`)
+        .then(res => res.json())
+        .then(data => setTotal(data.total))
+    },[_id,setTotal])
     const call = details(_id,user.accessToken)
     useEffect(()=>{
         const  today = new Date();
@@ -29,6 +35,8 @@ const Details = () => {
         }
     },[startReg,endReg])
 
+
+
     
 
     // console.log(registrationOpen)
@@ -39,6 +47,9 @@ const Details = () => {
                     src={image}
                     alt="Movie"/>
             </figure>
+            <div className='mt-3'>
+                <h1 className='text-3xl text-primary font-bold'>Total Registration :     {total}</h1>
+            </div>
             <div className="card-body">
                 <div className="card-title text-center">{title}</div>
                <div className='md:space-y-2'>
