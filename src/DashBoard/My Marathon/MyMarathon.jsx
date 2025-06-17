@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import AuthHook from '../../Components/Hooks/AuthHook';
+import { myMarathonApi } from '../../API/my_marathon_api';
+import MyCard from './MyCard';
 
 const MyMarathon = () => {
-    
+    const {user} = AuthHook();
+    const email = user?.email;
+    const [myMarathons,setMyMarathons] = useState([])
+    useEffect(()=>{
+         myMarathonApi(email)
+         .then(setMyMarathons)
+    },[email])
+
+    console.log(myMarathons)
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -9,21 +20,15 @@ const MyMarathon = () => {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
+                        <th>Title</th>
+                        <th>Location</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    
-                    
+                    {
+                        myMarathons.map((marathon,index)=><MyCard marathon={marathon} index={index} key={index} myMarathons={myMarathons} setMyMarathons={setMyMarathons}></MyCard>)
+                    }
                 </tbody>
             </table>
         </div>

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 const AllCard = ({ dataPromise }) => {
     const marathons = use(dataPromise)
     const navigate = useNavigate()
-    console.log(marathons)
     return (
         <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
             {
