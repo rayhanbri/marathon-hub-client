@@ -15,7 +15,7 @@ const MyMarathon = () => {
     const [modal, setModal] = useState(null)
 
     // console.log(myMarathons)
-    console.log(modal)
+    // console.log(modal)
 
     return (
         <div className="overflow-x-auto">
@@ -36,7 +36,7 @@ const MyMarathon = () => {
                     }
                 </tbody>
             </table>
-            <MyModal title={modal?.title}></MyModal>
+            <MyModal modal={modal} setModal={setModal}></MyModal>
         </div>
     );
 };
