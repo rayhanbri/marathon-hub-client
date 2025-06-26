@@ -1,6 +1,8 @@
 // import React, { useRef } from 'react';
 
+import axios from "axios";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 
 
@@ -25,12 +27,28 @@ const MyModal = ({ modals }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         console.log(modal)
+
+        axios.put(`http://localhost:3000/update/${modal?._id}`, modal)
+            .then(res => {
+                console.log(res.data)
+                Swal.fire({
+                    position: "top-right",
+                    icon: "success",
+                    title: "Marathons Updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
     }
 
     return (
         <dialog id="my_modal_2" className="modal">
             <div className="modal-box">
-                <form  className="fieldset">
+                <form className="fieldset">
                     {/* marathonon Title */}
                     <label className="label">Marathon Title</label>
                     <input type="text" name="title" className="input input-bordered w-full" placeholder='title'
