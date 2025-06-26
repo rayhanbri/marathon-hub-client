@@ -5,14 +5,15 @@ import MyCard from './MyCard';
 import MyModal from './MyModal';
 
 const MyMarathon = () => {
-    const { user } = AuthHook();
+    const { user, setLoading } = AuthHook();
     const email = user?.email;
     const [myMarathons, setMyMarathons] = useState([])
     useEffect(() => {
         myMarathonApi(email)
             .then(setMyMarathons)
-    }, [email])
-    const [modal, setModal] = useState(null)
+        setLoading(false)
+    }, [email, setLoading])
+    const [modals, setModals] = useState("")
 
     // console.log(myMarathons)
     // console.log(modal)
@@ -32,11 +33,11 @@ const MyMarathon = () => {
                 <tbody>
                     {
                         myMarathons.map((marathon, index) => <MyCard marathon={marathon} index={index} key={index} myMarathons={myMarathons} setMyMarathons={setMyMarathons}
-                        setModal={setModal}></MyCard>)
+                            setModals={setModals}></MyCard>)
                     }
                 </tbody>
             </table>
-            <MyModal modal={modal} setModal={setModal}></MyModal>
+            <MyModal modals={modals} setModal={setModals}></MyModal>
         </div>
     );
 };

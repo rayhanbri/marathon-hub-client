@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import MyModal from './MyModal';
 import Marathons from '../../Home/Marathons';
 
-const MyCard = ({ marathon, index, setMyMarathons, myMarathons,setModal }) => {
+const MyCard = ({ marathon, index, setMyMarathons, myMarathons,setModals }) => {
     
     const handleUpdate = (marathon) => {
-        setModal(marathon)
+        setModals(marathon)
         document.getElementById('my_modal_2').showModal()
     }
 
-    const handleSubmit = () => {
-        console.log('wow')
-    }
+    
 
 // console.log(modal)
 
