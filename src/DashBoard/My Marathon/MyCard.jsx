@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
+import MyModal from './MyModal';
+import Marathons from '../../Home/Marathons';
 
-const MyCard = ({ marathon, index, setMyMarathons, myMarathons }) => {
+const MyCard = ({ marathon, index, setMyMarathons, myMarathons,setModal }) => {
+    
+    const handleUpdate = (marathon) => {
+        setModal(marathon)
+        document.getElementById('my_modal_2').showModal()
+    }
+
+    const handleSubmit = () => {
+        console.log('wow')
+    }
+
+// console.log(modal)
+
+
     const handleDelte = (id) => {
         console.log(id)
         Swal.fire({
@@ -40,9 +55,12 @@ const MyCard = ({ marathon, index, setMyMarathons, myMarathons }) => {
             <td>{marathon.marathonDate}</td>
             <td>
                 <div className='flex md:gap-2'>
-                    <button className='btn btn-primary'>Update</button>
+                    <button
+                        onClick={() => handleUpdate(marathon)}
+                        className='btn btn-primary'>Update</button>
                     <button onClick={() => handleDelte(marathon._id)} className='btn bg-red-600 '>Delete</button>
                 </div>
+
             </td>
         </tr>
     );
