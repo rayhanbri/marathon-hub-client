@@ -77,6 +77,7 @@ const ApplyList = () => {
                                     index={index}
                                     setAllList={setAllList}
                                     allList={allList}
+                                    setFilteredList={setFilteredList}
                                 />
                             ))
                         ) : (

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const ListCard = ({ list, index, setAllList, allList }) => {
+const ListCard = ({ list, index, setAllList, allList,setFilteredList }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         fname: list?.fname || '',
@@ -27,7 +27,8 @@ const ListCard = ({ list, index, setAllList, allList }) => {
                     .then(data => {
                         if (data.deletedCount > 0) {
                             Swal.fire("Deleted!", "Your registration has been deleted.", "success");
-                            setAllList(allList.filter(item => item._id !== id));
+                            setAllList(prev => prev.filter(item => item._id !== id));
+                            setFilteredList(prev => prev.filter(item => item._id !== id));
                         }
                     });
             }
