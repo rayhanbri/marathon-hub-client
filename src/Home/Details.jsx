@@ -22,6 +22,7 @@ const Details = () => {
         .then(data => setTotal(data.total))
     },[_id,setTotal])
     const call = details(_id,user.accessToken)
+    console.log(call)
     useEffect(()=>{
         const  today = new Date();
         const startDate = new Date(startReg)

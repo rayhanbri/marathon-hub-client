@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import AuthHook from '../../Components/Hooks/AuthHook';
 import { list } from '../../API/list';
 import ListCard from './ListCard';
+import Spinner from '../../Components/Auth/Spinner';
 
 const ApplyList = () => {
     const [allList,setAllList] = useState([]);
     const {user,setLoading} = AuthHook();
-    const email = user?.email
+    const email = user?.email || user?.providerData[0].email;
+
 
     useEffect(()=> {
         list(email)
@@ -16,6 +18,8 @@ const ApplyList = () => {
    
     console.log(allList)
 
+    
+   
     return (
        <div className="overflow-x-auto">
             <table className="table">

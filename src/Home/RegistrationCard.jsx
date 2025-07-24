@@ -7,7 +7,7 @@ const RegistrationCard = ({ dataPromise }) => {
     const { user } = AuthHook();
     const regData = use(dataPromise)
     console.log(regData)
-    const email = user?.email || user?.providerData[0].email
+    const email = user?.email || user?.providerData[0].email;
   
 
 
