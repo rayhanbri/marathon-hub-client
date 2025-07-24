@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import MyModal from './MyModal';
 import Marathons from '../../Home/Marathons';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 const MyCard = ({ marathon, index, setMyMarathons, myMarathons,setModals }) => {
     
@@ -46,6 +47,9 @@ const MyCard = ({ marathon, index, setMyMarathons, myMarathons,setModals }) => {
     }
     return (
         <tr>
+            <Helmet>
+                <title>MY List</title>
+            </Helmet>
             <th>{index + 1}</th>
             <td>{marathon?.title}</td>
             <td>{marathon?.location}</td>

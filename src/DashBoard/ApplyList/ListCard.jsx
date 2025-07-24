@@ -1,7 +1,8 @@
+import { Helmet } from '@dr.pogodin/react-helmet';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
-const ListCard = ({ list, index, setAllList, allList,setFilteredList }) => {
+const ListCard = ({ list, index, setAllList, allList, setFilteredList }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         fname: list?.fname || '',
@@ -65,6 +66,9 @@ const ListCard = ({ list, index, setAllList, allList,setFilteredList }) => {
 
     return (
         <>
+            <Helmet>
+                <title>Marathon List</title>
+            </Helmet>
             <tr>
                 <th>{index + 1}</th>
                 <td>{list?.title}</td>

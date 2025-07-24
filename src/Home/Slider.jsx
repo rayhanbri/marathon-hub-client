@@ -3,6 +3,7 @@ import slider1 from '../assets/2400151.jpg';
 import slider2 from '../assets/4105749.jpg';
 import slider3 from '../assets/7491.jpg';
 import slider4 from '../assets/7505039.jpg';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 
 
@@ -21,6 +22,9 @@ const Slider = () => {
 
     return (
         <div className="relative w-full h-[255px] sm:h-[480px] overflow-hidden rounded-2xl">
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
             <div
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}

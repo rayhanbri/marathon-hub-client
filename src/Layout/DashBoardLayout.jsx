@@ -4,6 +4,7 @@ import Sidebar from '../DashBoard/Sidebar';
 import Navbar from '../Header/Navbar';
 import Footer from '../Header/Footer';
 import { FaBars } from "react-icons/fa";
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 
 const DashBoardLayout = () => {
@@ -11,6 +12,9 @@ const DashBoardLayout = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
       {/* Top Navbar */}
       <Navbar />
 

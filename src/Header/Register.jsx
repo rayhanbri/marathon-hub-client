@@ -5,6 +5,7 @@ import AuthHook from '../Components/Hooks/AuthHook';
 import { AuthContext } from '../Components/Auth/AuthContext';
 import Swal from 'sweetalert2';
 import { updateProfile } from 'firebase/auth';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 const Register = () => {
     const { createUser } = AuthHook();
@@ -13,7 +14,7 @@ const Register = () => {
     const location = useLocation();
     const from = location.state || '/';
     const navigate = useNavigate();
-    
+
 
     const validatePassword = (value) => {
         if (!/[A-Z]/.test(value)) {
@@ -60,7 +61,7 @@ const Register = () => {
                     timer: 1500
                 });
                 navigate(from)
-                
+
             })
             .catch(error => {
                 console.log(error)
@@ -70,6 +71,9 @@ const Register = () => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                 </div>

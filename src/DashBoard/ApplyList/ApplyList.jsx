@@ -3,6 +3,7 @@ import AuthHook from '../../Components/Hooks/AuthHook';
 import { list } from '../../API/list';
 import ListCard from './ListCard';
 import Spinner from '../../Components/Auth/Spinner';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 const ApplyList = () => {
     const [allList, setAllList] = useState([]);
@@ -17,7 +18,7 @@ const ApplyList = () => {
         if (!email) return;
 
         setLocalLoading(true);
-        list(email)
+        list(email,user?.accessToken)
             .then(data => {
                 setAllList(data);
                 setFilteredList(data); 
@@ -45,6 +46,9 @@ const ApplyList = () => {
 
     return (
         <div className="p-4">
+            <Helmet>
+                <title>ApplyList</title>
+            </Helmet>
             <h1 className="text-2xl font-semibold mb-4">My Applied Marathons</h1>
 
             {/* Search Input */}

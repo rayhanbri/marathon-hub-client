@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import AuthHook from '../Components/Hooks/AuthHook';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 const RegistrationCard = ({ dataPromise }) => {
     const { user } = AuthHook();
@@ -38,6 +39,9 @@ const RegistrationCard = ({ dataPromise }) => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Marathon Register</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                 </div>

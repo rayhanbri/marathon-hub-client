@@ -2,6 +2,7 @@ import React from 'react';
 import AuthHook from '../../Components/Hooks/AuthHook';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 const AddMarathon = () => {
     const { user } = AuthHook();
@@ -16,7 +17,7 @@ const AddMarathon = () => {
             .toString()
             .padStart(2, '0')}-${today.getFullYear()}`;
 
-        data.user_email = user.email;
+        data.user_email = user?.email || user?.providerData[0]?.email;
 
         console.log(data)
         axios.post('http://localhost:3000/marathons',  data )
@@ -46,6 +47,9 @@ const AddMarathon = () => {
 
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Add Marathon</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                 </div>

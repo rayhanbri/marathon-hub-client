@@ -6,16 +6,16 @@ import MyModal from './MyModal';
 
 const MyMarathon = () => {
     const { user, setLoading } = AuthHook();
-    const email = user?.email;
+    const email = user?.email || user?.providerData[0]?.email ;
     const [myMarathons, setMyMarathons] = useState([])
     useEffect(() => {
-        myMarathonApi(email)
+        myMarathonApi(email,user?.accessToken)
             .then(setMyMarathons)
         setLoading(false)
     }, [email, setLoading])
     const [modals, setModals] = useState("")
 
-    // console.log(myMarathons)
+    console.log(myMarathons)
     // console.log(modal)
 
     return (

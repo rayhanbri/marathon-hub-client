@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import SocialLogin from '../Components/Shared/SocialLogin';
 import AuthHook from '../Components/Hooks/AuthHook';
 import Swal from 'sweetalert2';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 const Login = () => {
     const { login } = AuthHook();
@@ -40,6 +41,9 @@ const Login = () => {
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                 </div>

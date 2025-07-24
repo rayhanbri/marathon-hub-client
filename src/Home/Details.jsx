@@ -8,6 +8,7 @@ import { useLoaderData, useNavigate } from 'react-router';
 import { details } from '../API/Details';
 import AuthHook from '../Components/Hooks/AuthHook';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { Helmet } from '@dr.pogodin/react-helmet';
 
 const Details = () => {
     const [total, setTotal] = useState(0)
@@ -23,8 +24,8 @@ const Details = () => {
             .then(res => res.json())
             .then(data => setTotal(data.total))
     }, [_id, setTotal])
-    const call = details(_id, user.accessToken)
-    console.log(call)
+    // const call = details(_id, user.accessToken)
+    // console.log(call)
     useEffect(() => {
         const today = new Date();
         const startDate = new Date(startReg)
@@ -58,6 +59,9 @@ const Details = () => {
     // console.log(registrationOpen)
     return (
         <div className="card bg-base-100 shadow-sm flex ">
+            <Helmet>
+                <title>Details</title>
+            </Helmet>
             <figure>
                 <img
                     src={image}

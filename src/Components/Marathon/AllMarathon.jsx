@@ -1,18 +1,42 @@
-import React, { useState, useMemo, Suspense } from 'react';
+import React, { useState, useMemo, Suspense, use } from 'react';
 import AllCard from './AllCard';
 import Spinner from '../Auth/Spinner';
 import { createResource } from '../../CreateResource/createResource';
+import { Helmet } from '@dr.pogodin/react-helmet';
+import { AuthContext } from '../Auth/AuthContext';
 
 const AllMarathon = () => {
   const [sortOrder, setSortOrder] = useState('desc');
+  const {user} = use(AuthContext);
 
   const dataResource = useMemo(() => {
-    const promise = fetch(`http://localhost:3000/marathons/list?sort=${sortOrder}`).then(res => res.json());
-    return createResource(promise);
-  }, [sortOrder]);
+    const fetchWithToken = async () => {
+      if (!user) throw new Error('Not authenticated');
 
+      const token = user?.accessToken;
+
+      const response = await fetch(`http://localhost:3000/marathons/list?sort=${sortOrder}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
+      return response.json();
+    };
+
+    return createResource(fetchWithToken());
+  }, [sortOrder]);
   return (
     <div>
+      <Helmet>
+        <title>Marathons</title>
+      </Helmet>
       <div className="mb-4">
         <label htmlFor="sort" className="mr-2 font-semibold">Sort by Date:</label>
         <select
