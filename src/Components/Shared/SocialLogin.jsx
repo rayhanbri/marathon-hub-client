@@ -1,11 +1,13 @@
 import React from 'react';
 import AuthHook from '../Hooks/AuthHook';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
-const SocialLogin = () => {
+const SocialLogin = ({from}) => {
     const { userWithGoogle } = AuthHook();
+    const  navigate = useNavigate();
     const handleSocial = () => {
-        // console.log('social')
+        // console.log(from)
         userWithGoogle()
             .then(res => {
                 console.log(res.user)
@@ -16,6 +18,7 @@ const SocialLogin = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(from)
             })
             .catch(error => {
                 console.log(error)

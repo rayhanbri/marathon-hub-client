@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import SocialLogin from '../Components/Shared/SocialLogin';
 import AuthHook from '../Components/Hooks/AuthHook';
 import { AuthContext } from '../Components/Auth/AuthContext';
@@ -8,10 +8,12 @@ import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { createUser } = AuthHook();
-    // console.log(name)
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
-
+    const location = useLocation();
+    const from = location.state || '/';
+    const navigate = useNavigate();
+    
 
     const validatePassword = (value) => {
         if (!/[A-Z]/.test(value)) {
@@ -57,6 +59,8 @@ const Register = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(from)
+                
             })
             .catch(error => {
                 console.log(error)

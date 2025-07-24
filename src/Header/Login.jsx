@@ -1,11 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import SocialLogin from '../Components/Shared/SocialLogin';
 import AuthHook from '../Components/Hooks/AuthHook';
 import Swal from 'sweetalert2';
 
 const Login = () => {
     const { login } = AuthHook();
+    const location = useLocation();
+    // console.log(location.state)\
+    const from=location.state || '/';
+    const navigate = useNavigate();
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -23,6 +27,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(from)
             })
             .catch(error => {
                 console.log(error)
@@ -48,10 +53,10 @@ const Login = () => {
                             {/* Password  */}
                             <label className="label">Password</label>
                             <input type="password" name='password' className="input" placeholder="Your Password" required />
-                            <div>Already Have An Account?<Link className='text-blue-500 underline' to='/register'>Register</Link></div>
+                            <div>Already Have An Account?<Link state={from} className='text-blue-500 underline' to='/register'>Register</Link></div>
                             <button className="btn btn-neutral mt-4">Login</button>
                         </form>
-                        <SocialLogin></SocialLogin>
+                        <SocialLogin from={from}></SocialLogin>
                     </div>
                 </div>
             </div>

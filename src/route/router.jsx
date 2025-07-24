@@ -16,6 +16,7 @@ import { details } from "../API/Details";
 import AuthHook from "../Components/Hooks/AuthHook";
 import Marathons from "../Home/Marathons";
 import AllMarathon from "../Components/Marathon/AllMarathon";
+import ApplyList from "../DashBoard/ApplyList/ApplyList";
 
 
 export const router = createBrowserRouter([
@@ -57,7 +58,11 @@ export const router = createBrowserRouter([
       },
       {
         path:'my-marathons',
-        Component:MyMarathon
+        element:<PrivateRoute><MyMarathon></MyMarathon></PrivateRoute>
+      },
+      {
+        path:'apply-list',
+        element:<PrivateRoute><ApplyList></ApplyList></PrivateRoute>
       }
     ]
   }

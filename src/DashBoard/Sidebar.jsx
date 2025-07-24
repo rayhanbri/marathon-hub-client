@@ -10,7 +10,7 @@ const Sidebar = () => {
                     <Link to="add-marathon" className="block text-blue-600 hover:underline">Add Marathon</Link>
                 </div>
                 <Link to="my-marathons" className="block text-blue-600 hover:underline">My Marathon List</Link>
-                <Link to="/apply-list" className="block text-blue-600 hover:underline">My Apply List</Link>
+                <Link to="apply-list" className="block text-blue-600 hover:underline">My Apply List</Link>
             </nav>
         </div>
     );
