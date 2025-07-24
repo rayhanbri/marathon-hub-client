@@ -5,44 +5,90 @@ import ListCard from './ListCard';
 import Spinner from '../../Components/Auth/Spinner';
 
 const ApplyList = () => {
-    const [allList,setAllList] = useState([]);
-    const {user,setLoading} = AuthHook();
-    const email = user?.email || user?.providerData[0].email;
+    const [allList, setAllList] = useState([]);
+    const [filteredList, setFilteredList] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const { user, setLoading } = AuthHook();
+    const [loading, setLocalLoading] = useState(true);
 
+    const email = user?.email || user?.providerData?.[0]?.email;
 
-    useEffect(()=> {
+    useEffect(() => {
+        if (!email) return;
+
+        setLocalLoading(true);
         list(email)
-        .then(setAllList)
-        setLoading(false)
-    },[email,setLoading])
-   
-    console.log(allList)
+            .then(data => {
+                setAllList(data);
+                setFilteredList(data); 
+                setLocalLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setLocalLoading(false);
+            });
+        setLoading(false);
+    }, [email, setLoading]);
 
-    
-   
+    const handleSearch = (e) => {
+        const value = e.target.value.toLowerCase();
+        setSearchText(value);
+        const filtered = allList.filter(item =>
+            item.title.toLowerCase().includes(value)
+        );
+        setFilteredList(filtered);
+    };
+
+    if (loading) {
+        return <Spinner />;
+    }
+
     return (
-       <div className="overflow-x-auto">
-            <table className="table">
-                {/* head */}
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                   {
-                    allList.map((list,index) =><ListCard list={list}
-                    index={index}
-                    setAllList={setAllList}
-                    allList={allList}
-                     key={index}></ListCard>)
-                   }
-                </tbody>
-            </table>
-            
+        <div className="p-4">
+            <h1 className="text-2xl font-semibold mb-4">My Applied Marathons</h1>
+
+            {/* Search Input */}
+            <div className="mb-4">
+                <input
+                    type="text"
+                    value={searchText}
+                    onChange={handleSearch}
+                    placeholder="Search by marathon title..."
+                    className="input input-bordered w-full max-w-md"
+                />
+            </div>
+
+            <div className="overflow-x-auto">
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Marathon Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filteredList.length > 0 ? (
+                            filteredList.map((item, index) => (
+                                <ListCard
+                                    key={item._id}
+                                    list={item}
+                                    index={index}
+                                    setAllList={setAllList}
+                                    allList={allList}
+                                />
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="4" className="text-center py-4 text-gray-500">
+                                    No results found for "{searchText}"
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
