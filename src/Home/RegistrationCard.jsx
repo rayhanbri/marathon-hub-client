@@ -7,6 +7,8 @@ const RegistrationCard = ({ dataPromise }) => {
     const { user } = AuthHook();
     const regData = use(dataPromise)
     console.log(regData)
+    const email = user?.email || user?.providerData[0].email
+  
 
 
     const handleReg = (e) => {
@@ -41,11 +43,11 @@ const RegistrationCard = ({ dataPromise }) => {
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                     <div className="card-body">
-                        <h1 className='text-4xl font-bold'>Login Now!</h1>
+                        <h1 className='text-4xl font-bold'>Register Now!</h1>
                         <form onSubmit={handleReg} className="fieldset">
                             {/* Email  */}
                             <label className="label">Email</label>
-                            <input type="email" defaultValue={user?.email} name='email' className="input" placeholder="Email" required />
+                            <input type="email" defaultValue={email} name='email' className="input" placeholder="Email" required />
                             {/* title  */}
                             <label className="label">Marathon Title</label>
                             <input type="text" name='title' className="input" placeholder="Title" defaultValue={regData.title} readOnly />
