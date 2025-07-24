@@ -17,12 +17,14 @@ import AuthHook from "../Components/Hooks/AuthHook";
 import Marathons from "../Home/Marathons";
 import AllMarathon from "../Components/Marathon/AllMarathon";
 import ApplyList from "../DashBoard/ApplyList/ApplyList";
+import ErrorPage from "../Components/Error.jsx/ErrorPage";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       { index: true, Component: Home },
       {
