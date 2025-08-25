@@ -20,7 +20,7 @@ const AddMarathon = () => {
         data.user_email = user?.email || user?.providerData[0]?.email;
 
         console.log(data)
-        axios.post('http://localhost:3000/marathons',  data )
+        axios.post('https://assigment-11-server-ten.vercel.app/marathons',  data )
             .then(res => {
                 console.log(res.data)
                 Swal.fire({

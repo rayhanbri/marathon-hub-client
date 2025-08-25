@@ -28,7 +28,7 @@ const MyModal = ({ modals }) => {
         e.preventDefault()
         console.log(modal)
 
-        axios.put(`http://localhost:3000/update/${modal?._id}`, modal)
+        axios.put(`https://assigment-11-server-ten.vercel.app/update/${modal?._id}`, modal)
             .then(res => {
                 console.log(res.data)
                 Swal.fire({

@@ -20,7 +20,7 @@ const Details = () => {
     const [timeRemaining, setTimeRemaining] = useState(0);
     // console.log(marathon)
     useEffect(() => {
-        fetch(`http://localhost:3000/total-registration/${_id}`)
+        fetch(`https://assigment-11-server-ten.vercel.app/total-registration/${_id}`)
             .then(res => res.json())
             .then(data => setTotal(data.total))
     }, [_id, setTotal])

@@ -3,7 +3,7 @@ import Card from './Card';
 import Spinner from '../Components/Auth/Spinner';
 
 const Marathons = () => {
-    const dataPromise=fetch('http://localhost:3000/marathons').then(res => res.json())
+    const dataPromise=fetch('https://assigment-11-server-ten.vercel.app/marathons').then(res => res.json())
     // console.log(dataPromise)
     return (
         <div>

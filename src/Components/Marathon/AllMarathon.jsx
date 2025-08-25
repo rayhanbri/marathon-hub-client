@@ -7,7 +7,7 @@ import { AuthContext } from '../Auth/AuthContext';
 
 const AllMarathon = () => {
   const [sortOrder, setSortOrder] = useState('desc');
-  const {user} = use(AuthContext);
+  const { user } = use(AuthContext);
 
   const dataResource = useMemo(() => {
     const fetchWithToken = async () => {
@@ -15,7 +15,7 @@ const AllMarathon = () => {
 
       const token = user?.accessToken;
 
-      const response = await fetch(`http://localhost:3000/marathons/list?sort=${sortOrder}`, {
+      const response = await fetch(`https://assigment-11-server-ten.vercel.app/marathons/list?sort=${sortOrder}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -1,5 +1,5 @@
 export const myMarathonApi = (email,token) =>{
-    return fetch(`http://localhost:3000/marathons/list?email=${email}`,{
+    return fetch(`https://assigment-11-server-ten.vercel.app/marathons/list?email=${email}`,{
          method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,

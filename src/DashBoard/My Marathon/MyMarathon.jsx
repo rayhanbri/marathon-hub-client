@@ -12,7 +12,7 @@ const MyMarathon = () => {
         myMarathonApi(email,user?.accessToken)
             .then(setMyMarathons)
         setLoading(false)
-    }, [email, setLoading])
+    }, [email, setLoading,user?.accessToken])
     const [modals, setModals] = useState("")
 
     console.log(myMarathons)

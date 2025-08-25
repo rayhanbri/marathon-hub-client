@@ -27,7 +27,7 @@ const MyCard = ({ marathon, index, setMyMarathons, myMarathons,setModals }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/marathons/${id}`, {
+                fetch(`https://assigment-11-server-ten.vercel.app/marathons/${id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())

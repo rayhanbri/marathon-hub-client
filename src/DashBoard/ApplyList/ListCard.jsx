@@ -21,7 +21,7 @@ const ListCard = ({ list, index, setAllList, allList, setFilteredList }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/registration/${id}`, {
+                fetch(`https://assigment-11-server-ten.vercel.app/registration/${id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())
@@ -44,7 +44,7 @@ const ListCard = ({ list, index, setAllList, allList, setFilteredList }) => {
     const handleUpdateSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:3000/registration/${list._id}`, {
+        fetch(`https://assigment-11-server-ten.vercel.app/registration/${list._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
