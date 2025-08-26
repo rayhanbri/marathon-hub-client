@@ -33,7 +33,7 @@ const AllMarathon = () => {
     return createResource(fetchWithToken());
   }, [sortOrder]);
   return (
-    <div>
+    <div className='my-5'>
       <Helmet>
         <title>Marathons</title>
       </Helmet>

@@ -54,6 +54,7 @@ export const router = createBrowserRouter([
     path:'/dashBoard',
     Component:DashBoardLayout,
     children:[
+      {index: true, element : <AddMarathon></AddMarathon>},
       {
         path:'add-marathon',
         element:<PrivateRoute><AddMarathon></AddMarathon></PrivateRoute>
