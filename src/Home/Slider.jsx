@@ -21,7 +21,7 @@ const Slider = () => {
     }, []);
 
     return (
-        <div className="relative w-full h-[255px] sm:h-[480px] overflow-hidden rounded-2xl">
+        <div className="relative w-full h-[700px] sm:h-[480px] overflow-hidden rounded-2xl my-5">
             <Helmet>
                 <title>Home</title>
             </Helmet>
