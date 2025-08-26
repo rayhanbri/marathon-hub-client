@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import slider1 from '../assets/2400151.jpg';
-import slider2 from '../assets/4105749.jpg';
-import slider3 from '../assets/7491.jpg';
-import slider4 from '../assets/7505039.jpg';
+import slider1 from '../assets/slider1.jpg';
+import slider2 from '../assets/slider2.jpg';
+import slider3 from '../assets/slider3.jpg';
+import slider4 from '../assets/slider4.jpg';
 import { Helmet } from '@dr.pogodin/react-helmet';
 
 

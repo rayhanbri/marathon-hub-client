@@ -22,14 +22,14 @@
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 Tech Stack 
 
 ### Client (Frontend)
 - **React.js**
 - **React Router DOM**
 - **Firebase Authentication**
 - **Tailwind CSS**
-- **React Helmet** for dynamic page titles
+- **React Helmet** for dynamic page titles *
 
 ### Server (Backend)
 - **Node.js**
