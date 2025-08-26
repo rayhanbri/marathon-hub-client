@@ -49,7 +49,6 @@ const DashBoardLayout = () => {
             </div>
          </div>
               <Link to='/' className="mx-2 font-bold  px-2">Marathon Hub</Link>
-            
             <div className="hidden navbar-center  lg:block">
               <ul className="menu menu-horizontal ">
                 {/* Navbar menu content here */}
@@ -60,7 +59,7 @@ const DashBoardLayout = () => {
             </div>
           </div>
           {/* Page content here */}
-          <Outlet></Outlet>
+            <Outlet></Outlet>
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>

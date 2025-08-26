@@ -1,15 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import AuthHook from '../Components/Hooks/AuthHook';
 import logo from '../assets/Marathon Hub Simple Logo.png'
 
 const Navbar = () => {
     const { user, logOut } = AuthHook();
     const links = <>
-        <Link to='/'>Home</Link>
-        <Link to='/show-marathon'>Marathons</Link>
+        <NavLink to='/'
+            className={({ isActive }) => isActive ? "border-b-2 text-blue-800 font-semibold" : "hover:text-blue-800 font-semibold"}
+        >Home</NavLink>
+        <NavLink to='/show-marathon'
+            className={({ isActive }) => isActive ? "border-b-2 text-blue-800 font-semibold" : "hover:text-blue-800 font-semibold"}
+        >Marathons</NavLink>
         {
-            user && <Link to='/dashBoard'>Dashboard</Link>
+            user && <NavLink to='/dashBoard'
+                className={({ isActive }) => isActive ? "border-b-2 text-blue-800 font-semibold" : "hover:text-blue-800 font-semibold"}
+            >Dashboard</NavLink>
         }
     </>
     // console.log(user.photoURL)
@@ -39,7 +45,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <div  className='flex gap-2'>
+                <div className='flex gap-2'>
                     <img src={logo} className='w-12 hidden sm:block' alt="" />
                     <h1 className='flex items-center text-xl md:text-4xl font-bold'>Marathon Hub</h1>
                 </div>
@@ -55,13 +61,13 @@ const Navbar = () => {
             <div className="navbar-end space-x-2.5 md:space-x-4">
                 {
                     user &&
-                     <div className="avatar">
+                    <div className="avatar">
                         <div className="mask mask-squircle w-10 md:w-16">
                             <img src={user.photoURL} />
                         </div>
-                        </div>
-                 }
-                    
+                    </div>
+                }
+
                 {
                     user ? <button onClick={handleSignOut} className='btn btn-primary'>SignOUt</button> :
                         <>
